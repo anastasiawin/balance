@@ -38,6 +38,10 @@ public class ExpenseController {
 	public Expense insertExpense(@RequestBody ExpenseDto expenseDto) throws ParseException {
 		return expenseRepository.save(convertToEntity(expenseDto));
 	}
+	@GetMapping("/categories")
+	public List <Category> getAllCategories() {
+		return ((List<Category>) categoryRepository.findAll());
+	}
 	@PostMapping("/expenses/{id}")
 	public void insertExpense(@PathVariable String id) {
 		expenseRepository.deleteById(id);
