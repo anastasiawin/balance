@@ -38,13 +38,6 @@
 		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
 			tableName="expense" />
 
-		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
-			tableName="expense_entity" />
-
-		<createIndex indexName="FKmvjm59reb5i075vu38bwcaqj6"
-			tableName="expense">
-			<column name="category_id" />
-		</createIndex>
 	</changeSet>
 
 </databaseChangeLog>
