@@ -39,7 +39,7 @@ public class ExpenseController {
 		return expenseRepository.save(convertToEntity(expenseDto));
 	}
 	@PostMapping("/expenses/{id}")
-	public void insertExpense(@PathVariable Long id) {
+	public void insertExpense(@PathVariable String id) {
 		expenseRepository.deleteById(id);
 	}
 	
