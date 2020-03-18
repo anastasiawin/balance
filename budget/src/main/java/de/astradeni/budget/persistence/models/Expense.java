@@ -1,20 +1,24 @@
-package de.astradeni.budget.models;
+package de.astradeni.budget.persistence.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Expense {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(columnDefinition = "BINARY(16)")
 	private long id;
 	
 
