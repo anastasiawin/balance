@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class ExpenseDto {
 
-	private long id;
+	private String id;
 	
 	@NotNull
 	private String name;
@@ -20,7 +20,7 @@ public class ExpenseDto {
 	@NotNull
 	private BigDecimal total;
 	
-	private long categoryId;
+	private String categoryId;
 	
 	private LocalDate date;
 

@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import de.astradeni.budget.persistence.models.Expense;
 
-public interface ExpenseRepository extends CrudRepository<Expense, Long> {
+public interface ExpenseRepository extends CrudRepository<Expense, String> {
 	
 
 }

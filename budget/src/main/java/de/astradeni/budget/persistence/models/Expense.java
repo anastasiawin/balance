@@ -19,7 +19,7 @@ public class Expense {
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(columnDefinition = "BINARY(16)")
-	private long id;
+	private String id;
 	
 
 	@NotNull
@@ -37,11 +37,11 @@ public class Expense {
 	
 	private LocalDate date;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
