@@ -30,19 +30,21 @@ public class ExpenseController {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@GetMapping("/expenses")
+	@GetMapping("/api/expenses")
 	public List <ExpenseDto> getAllExpenses() {
-		return ((List<Expense>) expenseRepository.findAll()).stream().map(expenseEntity -> convertToDto(expenseEntity)).collect(Collectors.toList());
+		List<Expense> expenses = (List<Expense>) expenseRepository.findAll();
+		List <ExpenseDto> returnList = expenses.stream().map(expenseEntity -> convertToDto(expenseEntity)).collect(Collectors.toList());
+		return returnList;
 	}
-	@PostMapping("/expenses")
+	@PostMapping("/api/expenses")
 	public Expense insertExpense(@RequestBody ExpenseDto expenseDto) throws ParseException {
 		return expenseRepository.save(convertToEntity(expenseDto));
 	}
-	@GetMapping("/categories")
+	@GetMapping("/api/categories")
 	public List <Category> getAllCategories() {
 		return ((List<Category>) categoryRepository.findAll());
 	}
-	@PostMapping("/expenses/{id}")
+	@PostMapping("/api/expenses/{id}")
 	public void insertExpense(@PathVariable String id) {
 		expenseRepository.deleteById(id);
 	}
@@ -50,6 +52,7 @@ public class ExpenseController {
 	private ExpenseDto convertToDto(Expense expenseEntity) {
 		ExpenseDto expenseDto = modelMapper.map(expenseEntity, ExpenseDto.class);
 		expenseDto.setCategoryId(expenseEntity.getCategory().getId());
+		expenseDto.setCategoryName(expenseEntity.getCategory().getName());
 		return expenseDto;
 	}
 	

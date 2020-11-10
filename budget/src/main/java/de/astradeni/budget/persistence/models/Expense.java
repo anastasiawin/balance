@@ -32,7 +32,7 @@ public class Expense {
 	
 	@NotNull
 	@ManyToOne
-	@JoinColumn
+    @JoinColumn(name="category_id", nullable=false)
 	private Category category;
 	
 	private LocalDate date;

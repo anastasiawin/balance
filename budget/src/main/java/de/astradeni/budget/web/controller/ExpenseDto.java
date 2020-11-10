@@ -22,6 +22,8 @@ public class ExpenseDto {
 	
 	private String categoryId;
 	
+	private String categoryName;
+	
 	private LocalDate date;
 
 }
