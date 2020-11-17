@@ -61689,6 +61689,30 @@ if (content.locals) {
 
 /***/ }),
 
+/***/ "./src/main/resources/js/api-config.js":
+/*!*********************************************!*\
+  !*** ./src/main/resources/js/api-config.js ***!
+  \*********************************************/
+/*! exports provided: API_ROOT */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_ROOT", function() { return API_ROOT; });
+var backendHost;
+var hostname = window && window.location && window.location.hostname;
+
+if (hostname === 'budgetwin.herokuapp.com') {
+  backendHost = 'https://budgetwin.herokuapp.com';
+} else {
+  backendHost = process.env.REACT_APP_BACKEND_HOST || 'http://localhost:8080';
+}
+
+var API_ROOT = "".concat(backendHost, "/api");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
 /***/ "./src/main/resources/js/app.js":
 /*!**************************************!*\
   !*** ./src/main/resources/js/app.js ***!
@@ -62310,6 +62334,7 @@ var NoMatch = function NoMatch() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api-config */ "./src/main/resources/js/api-config.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -62317,7 +62342,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-var BUDGET_API_URL = 'http://localhost:8080';
+
+var BUDGET_API_URL = 'https://budgetwin.herokuapp.com';
 var API_URL = "".concat(BUDGET_API_URL, "/api");
 
 var CategoriesDataService = /*#__PURE__*/function () {
@@ -62328,18 +62354,24 @@ var CategoriesDataService = /*#__PURE__*/function () {
   _createClass(CategoriesDataService, [{
     key: "retrieveAllCategories",
     value: function retrieveAllCategories() {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(API_URL, "/categories"));
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/categories"), {
+        crossDomain: true
+      });
     }
   }, {
     key: "deleteCategory",
     value: function deleteCategory(id) {
       //console.log('executed service')
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(API_URL, "/categories/").concat(id));
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/categories/").concat(id), {
+        crossDomain: true
+      });
     }
   }, {
     key: "createCategory",
     value: function createCategory(category) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(API_URL, "/categories/"), category);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/categories/"), category, {
+        crossDomain: true
+      });
     }
   }]);
 
@@ -62361,6 +62393,7 @@ var CategoriesDataService = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api-config */ "./src/main/resources/js/api-config.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -62368,8 +62401,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-var BUDGET_API_URL = 'http://localhost:8080';
-var API_URL = "".concat(BUDGET_API_URL, "/api");
+
 
 var ExpensesDataService = /*#__PURE__*/function () {
   function ExpensesDataService() {
@@ -62379,18 +62411,24 @@ var ExpensesDataService = /*#__PURE__*/function () {
   _createClass(ExpensesDataService, [{
     key: "retrieveAllExpenses",
     value: function retrieveAllExpenses(name) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(API_URL, "/expenses"));
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/expenses"), {
+        crossDomain: true
+      });
     }
   }, {
     key: "deleteExpense",
     value: function deleteExpense(id) {
       //console.log('executed service')
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(API_URL, "/expenses/").concat(id));
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/expenses/").concat(id), {
+        crossDomain: true
+      });
     }
   }, {
     key: "createExpense",
     value: function createExpense(expense) {
-      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(API_URL, "/expenses/"), expense);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(_api_config__WEBPACK_IMPORTED_MODULE_1__["API_ROOT"], "/expenses/"), expense, {
+        crossDomain: true
+      });
     }
   }]);
 
