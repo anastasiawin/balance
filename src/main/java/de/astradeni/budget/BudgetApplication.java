@@ -25,5 +25,4 @@ public class BudgetApplication {
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
 	}
-
 }
