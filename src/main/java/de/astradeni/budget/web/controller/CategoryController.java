@@ -22,7 +22,7 @@ import de.astradeni.budget.persistence.repositories.CategoryRepository;
 import de.astradeni.budget.services.CategoriesService;
 
 @RestController
-@CrossOrigin(origins = { "https://budgetwin.herokuapp.com/"})
+@CrossOrigin(origins = { "http://budgetwin.herokuapp.com"})
 public class CategoryController {
 
 	@Autowired

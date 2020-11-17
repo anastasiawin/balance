@@ -25,7 +25,7 @@ import de.astradeni.budget.services.ExpensesService;
 
 
 @RestController
-@CrossOrigin(origins = { "https://budgetwin.herokuapp.com/"})
+@CrossOrigin(origins = { "http://budgetwin.herokuapp.com"})
 public class ExpenseController {
 	
 	@Autowired
