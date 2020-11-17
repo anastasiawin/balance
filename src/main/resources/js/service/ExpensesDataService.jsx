@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BUDGET_API_URL = 'http://budgetwin.herokuapp.com'
+const BUDGET_API_URL = 'https://budgetwin.herokuapp.com'
 const API_URL = `${BUDGET_API_URL}/api`
 
 class ExpensesDataService {
