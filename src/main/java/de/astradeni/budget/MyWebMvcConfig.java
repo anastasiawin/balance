@@ -11,7 +11,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
    @Override
    public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/api/**")
+            registry.addMapping("/**")
                     .allowedOrigins("http://budgetwin.herokuapp.com")
                     .allowedMethods("GET", "POST","DELETE", "OPTIONS")
                     .allowCredentials(false).maxAge(3600);
