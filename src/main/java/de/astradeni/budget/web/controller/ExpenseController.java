@@ -50,10 +50,6 @@ public class ExpenseController {
 		        .toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	@GetMapping("/api/categories")
-	public List <Category> getAllCategories() {
-		return ((List<Category>) categoryRepository.findAll());
-	}
 	
 	@DeleteMapping("/api/expenses/{id}")
 	public ResponseEntity<Void> deleteExpense(@PathVariable String id) {
