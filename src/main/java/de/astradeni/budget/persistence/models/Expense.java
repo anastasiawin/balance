@@ -3,6 +3,7 @@ package de.astradeni.budget.persistence.models;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,14 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Expense {
 	@Id
 	@GeneratedValue(generator = "uuid2")
@@ -21,7 +29,6 @@ public class Expense {
 	@Column(columnDefinition = "BINARY(16)")
 	private String id;
 	
-
 	@NotNull
 	private String name;
 	
@@ -31,7 +38,7 @@ public class Expense {
 	private BigDecimal total;
 	
 	@NotNull
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name="category_id", nullable=false)
 	private Category category;
 	

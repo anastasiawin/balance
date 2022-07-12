@@ -32,10 +32,10 @@
 			</column>
 		</createTable>
 
-		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY_CATEGORY"
 			tableName="category" />
 
-		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY_EXPENSE"
 			tableName="expense" />
 
 	</changeSet>

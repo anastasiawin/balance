@@ -6,6 +6,7 @@ import NoMatch from './components/NoMatch';
 import '../css/bootstrap-dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavigationBar } from './components/NavigationBar';
+
 class App extends React.Component {
 
 

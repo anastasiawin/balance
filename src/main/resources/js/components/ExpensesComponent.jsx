@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import DatePicker from "react-datepicker";
+
 import ExpensesDataService from '../service/ExpensesDataService';
 import CategoriesDataService from '../service/CategoriesDataService';
 
@@ -10,12 +12,7 @@ class ExpensesComponent extends React.Component {
 		this.state = {
 			expenses: [],
 			categories: [],
-			message: null,
-			categoryId: '',
-			name: '',
-			description: '',
-			total: '',
-			date: ''
+			message: null
 		};
 		this.refreshExpenses = this.refreshExpenses.bind(this)
 		this.refreshCategories = this.refreshCategories.bind(this)
@@ -31,19 +28,19 @@ class ExpensesComponent extends React.Component {
 	}
 
 	render() {
-		let { categoryId, name, description, total, date } = this.state
+
 		return (
 			<div className="container">
 				<h1>Расходы</h1>
 				<div className="container">
-					<Formik initialValues={{ categoryId, name, description, total, date }} onSubmit={this.onSubmit}
+					<Formik initialValues={{ categoryId:'', name:'', description:'', total:'', date: new Date() }} onSubmit={this.onSubmit}
 						validateOnChange={false}
 						validateOnBlur={false}
 						validate={this.validate}
 						enableReinitialize={true}
 					>
 						{
-							(props) => (
+							({ isSubmitting, values, setFieldValue })=> (
 								<Form>
 									<ErrorMessage name="description" component="div" className="alert alert-warning" />
 									<fieldset className="form-group">
@@ -68,8 +65,14 @@ class ExpensesComponent extends React.Component {
 										<Field className="form-control" type="text" name="total" />
 									</fieldset>
 									<fieldset className="form-group">
-										<label>Date</label>
-										<Field className="form-control" type="text" name="date" />
+										<label>Date </label>
+										<DatePicker
+											className="form-control"
+											selected={values.date}
+											dateFormat="yyyy-MM-dd"
+										   	name="date"
+										   	onChange={date => setFieldValue('date', date)}
+                                        />
 									</fieldset>
 									<button className="btn btn-success" type="submit">Add</button>
 								</Form>
@@ -108,6 +111,7 @@ class ExpensesComponent extends React.Component {
 						</tbody>
 					</table>
 				</div>
+				<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/2.14.1/react-datepicker.min.css" />
 			</div>
 		)
 	}
@@ -152,7 +156,7 @@ class ExpensesComponent extends React.Component {
 			)
 
 	}
-
+  
 	onSubmit(values) {
 		let expense = {
 			name: values.name,

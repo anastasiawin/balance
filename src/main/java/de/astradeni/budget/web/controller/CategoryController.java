@@ -40,11 +40,11 @@ public class CategoryController {
 	}
 
 	@PostMapping("/api/categories")
-	public ResponseEntity<CategoryDto> insertExpenseCategories(@RequestBody CategoryDto categoryDto) throws ParseException {
+	public ResponseEntity<CategoryDto> insertExpenseCategory(@RequestBody CategoryDto categoryDto) throws ParseException {
 		Category category = categoriesService.insertCategory(convertToEntity(categoryDto));
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId())
 		        .toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(convertToDto(category));
 	}
 	
 	@DeleteMapping("/api/categories/{id}")
